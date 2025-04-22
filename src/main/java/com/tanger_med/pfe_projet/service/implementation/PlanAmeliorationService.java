@@ -25,36 +25,27 @@ public class PlanAmeliorationService {
 
     @Autowired
     private ColaboratorDao colaboratorDao;
-
     public PlanAmelioration save(PlanAmeliorationDTO dto) {
         PlanAmelioration plan = new PlanAmelioration();
-
-        // Remplir les champs simples
+        // Remplir champs simples
         plan.setLibelle(dto.getLibelle());
         plan.setDescriptionAction(dto.getDescriptionAction());
         plan.setDateCreation(LocalDateTime.parse(dto.getDateCreation()));
         plan.setDateResolutionPrevue(LocalDateTime.parse(dto.getDateResolutionPrevue()));
-
-        //Trouver l'incident par ID
+        // Trouver l'incident par ID
         Long incidentId = dto.getIncident().getId();
         Incident incident = incidentDao.findById(incidentId)
                 .orElseThrow(() -> new RuntimeException("Incident avec l'id " + incidentId + " non trouvé."));
         plan.setIncident(incident);
-
-        // Trouver le collaborateur par ID du type
-        Long typeColaboratorId = dto.getColaboratorPlan().getId();
-        List<Colaborator> colaborators = colaboratorDao.findByTypeColaboratorId(typeColaboratorId);
-        if (colaborators.isEmpty()) {
-            throw new RuntimeException("Aucun collaborateur trouvé pour le type d'id : " + typeColaboratorId);
-        }
-
-        // Tu peux affiner la sélection ici si nécessaire
-        Colaborator colaborator = colaborators.get(0);
+        // Trouver le collaborateur par son ID
+        Long colaboratorId = dto.getColaboratorPlan().getId();
+        Colaborator colaborator = colaboratorDao.findById(colaboratorId)
+                .orElseThrow(() -> new RuntimeException("Collaborateur avec l'id " + colaboratorId + " non trouvé."));
         plan.setColaboratorPlan(colaborator);
-
-        //Sauvegarde du plan
+        // Sauvgarder plan
         return planAmeliorationDao.save(plan);
     }
+
 
 
 

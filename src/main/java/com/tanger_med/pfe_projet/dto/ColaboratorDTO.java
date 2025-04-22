@@ -14,7 +14,9 @@ public class ColaboratorDTO {
         this.typeColaboratorCode = typeColaboratorCode;
     }
 
-    public static class PortCodeDTO{
+
+
+    /* public static class PortCodeDTO{
        private String code;
 
         public String getCode() {
@@ -26,6 +28,8 @@ public class ColaboratorDTO {
         }
 
     }
+
+     */
 
 
 }

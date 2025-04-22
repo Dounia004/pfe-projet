@@ -23,6 +23,16 @@ public class PortWS {
         return portService.findAll();
     }
 
+    @GetMapping("/code/{code}")
+    public Port findByCode(@PathVariable String code) {
+        return portService.findByCode(code);
+    }
+
+    @DeleteMapping("/code/{code}")
+    public int deleteByCode(@PathVariable String code) {
+        return portService.deleteByCode(code);
+    }
+
     @DeleteMapping("/id/{id}")
     public int deleteById(@PathVariable Long id) {
         return portService.deleteById(id);

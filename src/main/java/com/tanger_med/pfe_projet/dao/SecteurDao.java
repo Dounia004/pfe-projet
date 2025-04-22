@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SecteurDao extends JpaRepository<Secteur, Long> {
     Secteur findByCode(String code);
+    void deleteByCode(String code);
 
 }

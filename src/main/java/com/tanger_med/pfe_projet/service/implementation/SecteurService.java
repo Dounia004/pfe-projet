@@ -20,6 +20,7 @@ public class SecteurService {
     private PortDao portDao;
 
     public Secteur save(SecteurDTO dto) {
+        // verifier validite du dto cad bien rempli le champ du port dans le JSON de secteur.
         if (dto.getPort() == null||dto.getPort().getCode() == null) {
             throw new IllegalArgumentException("Le code du port est requis.");
         }
@@ -42,6 +43,11 @@ public class SecteurService {
     public List<Secteur> findAll() {
         return secteurDao.findAll();
     }
+
+    public Secteur findByCode(String code) {
+        return secteurDao.findByCode(code);
+    }
+
 
     public int deleteById(Long id) {
         if (secteurDao.existsById(id)) {

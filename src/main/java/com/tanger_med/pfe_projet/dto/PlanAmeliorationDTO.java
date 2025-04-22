@@ -6,7 +6,7 @@ public class PlanAmeliorationDTO {
     private String dateCreation;
     private String dateResolutionPrevue;
     private IncidentIdDTO incident;
-    private ColaboratorTypeIdDTO colaboratorPlan;
+    private ColaboratorIdDTO colaboratorPlan;
 
 
 //premiere classe imbriquer
@@ -23,8 +23,9 @@ public class PlanAmeliorationDTO {
     }
 
     //deuxieme classe imbrique
-    public static class ColaboratorTypeIdDTO {
-        private Long id; // ID du TypeColaborator
+// Remplace l’ancienne classe imbriquée ColaboratorTypeIdDTO par :
+    public static class ColaboratorIdDTO {
+        private Long id;
 
         public Long getId() {
             return id;
@@ -57,7 +58,7 @@ public class PlanAmeliorationDTO {
         return incident;
     }
 
-    public ColaboratorTypeIdDTO getColaboratorPlan() {
+    public ColaboratorIdDTO getColaboratorPlan() {
         return colaboratorPlan;
     }
 
@@ -82,7 +83,7 @@ public class PlanAmeliorationDTO {
         this.incident = incident;
     }
 
-    public void setColaboratorPlan(ColaboratorTypeIdDTO colaboratorPlan) {
+    public void setColaboratorPlan(ColaboratorIdDTO colaboratorPlan) {
         this.colaboratorPlan = colaboratorPlan;
     }
 

@@ -25,6 +25,11 @@ public class SecteurWS {
         return secteurService.findAll();
     }
 
+    @GetMapping("/code/{code}")
+    public Secteur findByCode(@PathVariable String code) {
+        return secteurService.findByCode(code);
+    }
+
     @DeleteMapping("/id/{id}")
     public int deleteById(@PathVariable Long id) {
         return secteurService.deleteById(id);

@@ -59,7 +59,7 @@ public class IncidentService {
         if (dto.getDateValidation() != null) {
             incident.setDateValidation(LocalDateTime.parse(dto.getDateValidation(), formatter));
         }
-
+        //Associations avec d'autres entités
         if (dto.getTypeIncident() != null && dto.getTypeIncident().getCode() != null) {
             incident.setTypeIncident(typeIncidentDao.findByCode(dto.getTypeIncident().getCode()));
         }
@@ -75,6 +75,7 @@ public class IncidentService {
         if (dto.getPort() != null && dto.getPort().getCode() != null) {
             incident.setPort(portDao.findByCode(dto.getPort().getCode()));
         }
+        //recuperer liste de Colaborator correspondant au type.
         if (dto.getColaborator() != null && dto.getColaborator().getTypeColaboratorCode() != null) {
             List<Colaborator> cols = colaboratorDao.findByTypeColaboratorCode(dto.getColaborator().getTypeColaboratorCode());
             if (!cols.isEmpty()) {
@@ -164,9 +165,5 @@ public class IncidentService {
     public List<Incident> findByEtatIncidentCode(String code) {
         return incidentDao.findByEtatIncidentCode(code);
     }
-
-
-
-
 
 }

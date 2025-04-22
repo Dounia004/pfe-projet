@@ -61,9 +61,5 @@ public class ColaboratorService {
     public long countByTypeColaboratorCode(String code){
         return colaboratorDao.countByTypeColaboratorCode(code);
     }
-
-
-
-
 }
 

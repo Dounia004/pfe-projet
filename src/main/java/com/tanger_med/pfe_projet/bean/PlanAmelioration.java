@@ -11,14 +11,16 @@ public class   PlanAmelioration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY) //FetchType.LAZY signifie que les données liées à l'entité (les entités associées) ne seront chargées que lorsque vous y accédez explicitement
+    @ManyToOne    //FetchType.LAZY signifie que les données liées à l'entité (les entités associées) ne seront chargées que lorsque vous y accédez explicitement
     @JoinColumn(name = "incident_id")
     private Incident incident;
 
     @ManyToOne
+    @JoinColumn(name = "colaborator_plan_id")
     private Colaborator colaboratorPlan;
 
     @Lob
+    @Column(name = "description_action")
     private String descriptionAction;
 
     private String libelle;

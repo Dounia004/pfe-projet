@@ -13,10 +13,29 @@ public class PortService {
     @Autowired
     private PortDao dao;
 
-    public Port save(Port port) { return dao.save(port); }
-    public List<Port> findAll() { return dao.findAll(); }
+    public Port save(Port port) {
+        return dao.save(port);
+    }
+    public List<Port> findAll() {
+        return dao.findAll();
+    }
+
+    public Port findByCode(String code) {
+        return dao.findByCode(code);
+    }
+
     public int deleteById(Long id) {
         if (dao.existsById(id)) { dao.deleteById(id); return 1; }
         return -1;
     }
+
+    public int deleteByCode(String code) {
+        Port port = dao.findByCode(code);
+        if (port != null) {
+            dao.deleteByCode(code);
+            return 1;
+        }
+        return -1;
+    }
+
 }

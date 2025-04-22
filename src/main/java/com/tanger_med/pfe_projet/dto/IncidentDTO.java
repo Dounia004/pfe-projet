@@ -92,8 +92,6 @@ public class IncidentDTO {
     }
 
     //getters et setters de classe mere
-
-
     public String getLibelle() {
         return libelle;
     }
