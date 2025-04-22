@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PortDao extends JpaRepository<Port,Long> {
     Port findByCode(String code);
-    void deleteByCode(String code);
-
 
 }

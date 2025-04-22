@@ -29,13 +29,5 @@ public class PortService {
         return -1;
     }
 
-    public int deleteByCode(String code) {
-        Port port = dao.findByCode(code);
-        if (port != null) {
-            dao.deleteByCode(code);
-            return 1;
-        }
-        return -1;
-    }
 
 }
